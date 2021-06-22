@@ -5,9 +5,20 @@ import java.util.List;
 /** DTO with the details of the promotion **/
 public class UnitPromotion {
 	
+	private String id;
+	
 	private List<UnitOrder> unitOrder;
 	private long promotionPrice;
 	
+	
+	
+
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public List<UnitOrder> getUnitOrder() {
 		return unitOrder;
 	}

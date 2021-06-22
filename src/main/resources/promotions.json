@@ -1,0 +1,16 @@
+{
+	"promotions":[
+		{
+			"id": "1",
+			"unitOrder":[
+				{
+					"idProduct":"A",
+					"quantity": 3
+				}
+			],
+			"promotionPrice": 50
+		}
+	
+	]
+	
+}
