@@ -2,8 +2,9 @@
 
 The Spring boot project has two endpoints:
 
-purcharseOrder (POST): to create order. Returns the total amount of the order
-updatePromotions (POST): to update the promotions. Returns nothing
+-purcharseOrder (POST): to create order. Returns the total amount of the order
+
+-updatePromotions (POST): to update the promotions. Returns nothing
 
 Example of purcharseOrder request:
     
