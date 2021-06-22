@@ -8,7 +8,31 @@
 					"quantity": 3
 				}
 			],
-			"promotionPrice": 50
+			"promotionPrice": 130
+		},
+		{
+			"id": "2",
+			"unitOrder":[
+				{
+					"idProduct":"B",
+					"quantity": 2
+				}
+			],
+			"promotionPrice": 45		
+		},
+		{
+			"id": "3",
+			"unitOrder":[
+				{
+					"idProduct":"C",
+					"quantity": 1
+				},
+				{
+					"idProduct":"D",
+					"quantity": 1
+				}				
+			],
+			"promotionPrice": 30		
 		}
 	
 	]

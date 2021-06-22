@@ -2,6 +2,7 @@ package com.promotion.api.service;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -69,6 +70,8 @@ public class PromotionEngineServiceImpl implements PromotionEngineService {
 		//Check promotions
 		for (UnitPromotion unitPromotion:promotions.getPromotions()) {
 			
+			int currentPromotion = 0;
+			
 			for (UnitOrder unitOrder: unitPromotion.getUnitOrder()) {
 				
 				//Get the current catalog of promotions. The promotion could contain more than one product
@@ -81,7 +84,7 @@ public class PromotionEngineServiceImpl implements PromotionEngineService {
 				
 				int promotionsFound = promotionsFoundInOrder.getOrDefault(unitPromotion.getId(), -1);
 				
-				int currentPromotion = numberOfProducts / unitOrder.getQuantity();
+				currentPromotion = numberOfProducts / unitOrder.getQuantity();
 				
 				if (promotionsFound==-1||promotionsFound>currentPromotion) {
 					promotionsFoundInOrder.put(unitPromotion.getId(), currentPromotion);
@@ -89,28 +92,35 @@ public class PromotionEngineServiceImpl implements PromotionEngineService {
 				
 			}
 			
+			currentPromotion = promotionsFoundInOrder.getOrDefault(unitPromotion.getId(), -1) ;
 			
-			if (promotionsFoundInOrder.getOrDefault(unitPromotion.getId(), -1) != -1) {
+			if (currentPromotion > 0) {
 				
 				//Lets Calculate partial total
+				total += (unitPromotion.getPromotionPrice()*currentPromotion);
 				
-				
-				//update map with products pending to process
+				//Update map with products from order pending to process
+				for (UnitOrder unitOrder: unitPromotion.getUnitOrder()) {
+					Integer numberOfProducts = purchasedProducts.get(unitOrder.getIdProduct());
+					if (numberOfProducts == null) {
+						continue;
+					}
+					numberOfProducts -= (unitOrder.getQuantity()*currentPromotion);
+					purchasedProducts.put(unitOrder.getIdProduct(), numberOfProducts);
+				}
 				
 			}
 			
-			
 		}
 		
-		//Check the number of found promotions
+		//Check the remaining number of products of the order and calculate total order
+		Iterator<String> productKeys  = purchasedProducts.keySet().iterator();
+		while (productKeys.hasNext()) {
+			String key = productKeys.next();
+			long price = products.get(key);
+			total+=price*(purchasedProducts.get(key));
+		}
 		
-		
-		
-		
-		
-
-		//Calculate total amount of purchase order 
-
 		orderResponse.setTotal(total);
 		
 		return orderResponse;
