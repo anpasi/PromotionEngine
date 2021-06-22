@@ -9,7 +9,7 @@
 		<version>2.5.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<groupId>com.promotion</groupId>
 	<artifactId>PromotionEngine</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -17,6 +17,8 @@
 	<description>Promotion Engine project</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<junit.jupiter.version>5.3.0</junit.jupiter.version>
+		<junit.platform.version>1.5.2</junit.platform.version>
 	</properties>
 	<dependencies>
 
@@ -35,6 +37,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
