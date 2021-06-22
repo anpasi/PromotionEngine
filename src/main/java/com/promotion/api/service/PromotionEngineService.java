@@ -1,6 +1,9 @@
 package com.promotion.api.service;
 
-public interface PromotionEngineService {
+import com.promotion.api.data.response.OrderResponse;
 
+public interface PromotionEngineService {
+	
+	OrderResponse purchaseOrder(OrderResponse orderResponse);
 	
 }
