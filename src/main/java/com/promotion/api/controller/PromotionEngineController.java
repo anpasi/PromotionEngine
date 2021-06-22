@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.promotion.api.data.request.OrderRequest;
+import com.promotion.api.data.request.UpdatePromotionsRequest;
 import com.promotion.api.data.response.OrderResponse;
 import com.promotion.api.service.PromotionEngineService;
 
@@ -32,6 +33,17 @@ public class PromotionEngineController {
 
 	}
 	
+	
+	@PostMapping(path = "/updatePromotions", consumes = "application/json", produces = "application/json")
+	public void updatePromotions(@RequestBody UpdatePromotionsRequest updatePromotionsRequest) {
+		
+		if (updatePromotionsRequest != null  && updatePromotionsRequest.getPromotions()!= null 
+				&& !updatePromotionsRequest.getPromotions().isEmpty() ) {
+			service.updatePromotions(updatePromotionsRequest);
+		}
+		
+
+	}
 	
 
 }

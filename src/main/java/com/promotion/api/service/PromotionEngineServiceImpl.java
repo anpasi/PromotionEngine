@@ -16,6 +16,7 @@ import com.promotion.api.data.common.Promotions;
 import com.promotion.api.data.common.UnitOrder;
 import com.promotion.api.data.common.UnitPromotion;
 import com.promotion.api.data.request.OrderRequest;
+import com.promotion.api.data.request.UpdatePromotionsRequest;
 import com.promotion.api.data.response.OrderResponse;
 
 @Component
@@ -125,6 +126,13 @@ public class PromotionEngineServiceImpl implements PromotionEngineService {
 		orderResponse.setTotal(total);
 
 		return orderResponse;
+	}
+
+
+	@Override
+	public void updatePromotions(UpdatePromotionsRequest updatePromotionsRequest) {
+		this.promotions.setPromotions(updatePromotionsRequest.getPromotions());
+		
 	}
 
 }
