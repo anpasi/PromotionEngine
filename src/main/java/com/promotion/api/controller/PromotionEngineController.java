@@ -25,6 +25,9 @@ public class PromotionEngineController {
 	@PostMapping(path = "/purchaseOrder", consumes = "application/json", produces = "application/json")
 	public OrderResponse purchaseOrder(@RequestBody OrderRequest orderRequest) {
 		
+		if (orderRequest == null || orderRequest.getOrders()== null || orderRequest.getOrders().isEmpty() ) {
+			return null;
+		}
 		return service.purchaseOrder(orderRequest);
 
 	}

@@ -7,6 +7,7 @@ public class UnitPromotion {
 	
 	private List<UnitOrder> unitOrder;
 	private long promotionPrice;
+	
 	public List<UnitOrder> getUnitOrder() {
 		return unitOrder;
 	}
